@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <title>Loan Admin</title>
+  <meta name="description" content="Payment system that safeguides online transactions" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="shortcut icon" href="./images/zatu_icon.png" />
+
+</head>
+
+<body>
+
+
+  <!-- subscription container -->
+  <div class="dismiss" id="subscription_container">
+
+
+    <!-- LANDING PAGE FOR SUBSCRIPTION EXPIRED -->
+    <div class="landing_page_sub" id="landing_page_sub">
+
+
+      <span class="material-symbols-outlined" id="warning_icon">
+        warning
+      </span>
+
+      <span>subscription has expired</span>
+
+      <button id="Pay_subcription_button">Pay subcription</button>
+    </div>
+
+
+
+    <!-- PATMENT OPTIONS FOR SUBSCRIPTION EXPIRED -->
+    <div class="dismiss" id="payment_options_sub">
+
+      <div class="row_payment_option" id="row_payment_option_Mobile_Payment">
+
+        <span>Mobile Payment</span><span class="material-symbols-outlined">
+          arrow_forward_ios
+        </span>
+      </div>
+      <div class="row_payment_option" id="row_payment_option_transfer_Payment">
+
+        <span>Transfer Payment</span><span class="material-symbols-outlined">
+          arrow_forward_ios
+        </span>
+      </div>
+
+    </div>
+
+
+    <!-- MOBILE PAYMENT SECTION -->
+    <div class="dismiss" id="mobile_payment_option_section">
+
+      <div class="back_button_container" id="back_button_container_mobile_payment">
+
+        <span class="material-symbols-outlined">
+          arrow_back
+        </span>
+
+      </div>
+      <input type="text" placeholder="Mobile Number (096xxxxxxxx)" id="mobile_number_payment_input">
+      <div id="mobile_number_payment_button">
+        <span class="dismiss" id="loading_icon_mobile_payment">
+          data_usage
+        </span>
+        <span>PAY</span>
+
+      </div>
+
+      <div class="payment_options">
+        <img src="./images/zamtel_icon.png" alt="" width="30" height="30">
+        <img src="./images/mtn_icon.jpg" alt="" width="30" height="30">
+      </div>
+    </div>
+
+    <!-- TRANSFER MONEY SECTION -->
+    <div class="dismiss" id="transfer_payment_option_section">
+
+      <div class="back_button_container" id="back_button_container_transfer_payment">
+
+        <span class="material-symbols-outlined">
+          arrow_back
+        </span>
+
+      </div>
+      <input type="text" placeholder="Transaction Id" class="mobile_number_transfer_payment_input"
+        id="Transaction_Id_transfer_payment_input">
+      <input type="text" placeholder="Receiver Number" class="mobile_number_transfer_payment_input"
+        id="Receiver_Number_transfer_payment_input">
+      <input type="text" placeholder="Sender Number" class="mobile_number_transfer_payment_input"
+        id="Sender_Number_transfer_payment_input">
+      <input type="text" placeholder="Amount" class="mobile_number_transfer_payment_input"
+        id="amount_transfer_payment_input">
+
+
+      <div id="transfer_payment_button">
+        <span class="dismiss" id="loading_icon_transfer_payment">
+          data_usage
+        </span>
+        <span>Submit</span>
+
+      </div>
+
+    </div>
+  </div>
+  <!---------------------------------------------------------------------------------------------------------------->
+
+
+  <!-- The actual snackbar -->
+  <div id="snackbar">
+
+    <span id="snackbar_message">snackbar message</span>
+    <span class="material-symbols-outlined" id="snackbar_icon">
+      check_circle
+    </span>
+  </div>
+
+  <!--DASHBAORD-->
+  <div class="dashboard_container" id="dashboard_container">
+    <!--SIDEBAR-->
+    <div class="sidebar_container" id="sidebar_container">
+      <img id="logo" src="./images/zatu_icon.png" alt="" width="80" height="80" />
+
+      <div class="options" id="options_home">
+        <span class="material-symbols-outlined"> home </span>
+        <span id="options_home_">Home</span>
+      </div>
+      <div class="options" id="options_account">
+        <span class="material-symbols-outlined"> assured_workload </span>
+        <span id="options_account_">Accouting</span>
+      </div>
+      <div class="options" id="options_employees">
+        <span class="material-symbols-outlined"> assignment_ind </span>
+        <span id="options_employees_">Employees</span>
+      </div>
+
+      <div class="options" id="options_loan_settings">
+        <span class="material-symbols-outlined"> settings_account_box </span>
+        <span id="options_loan_settings_">Loan Settings</span>
+      </div>
+      <div class="options" id="options_profile_settings">
+        <span class="material-symbols-outlined"> manage_accounts </span>
+        <span id="options_profile_settings_">Profile Settings</span>
+      </div>
+      <div class="options" id="options_verified_clients">
+        <span class="material-symbols-outlined"> verified </span>
+        <span id="options_verified_clients_">Verified Clients</span>
+      </div>
+      <div class="options" id="options_billings">
+        <span class="material-symbols-outlined"> payments </span>
+        <span id="options_billings_">Billing</span>
+      </div>
+      <div class="options" id="options_devices">
+        <span class="material-symbols-outlined"> devices </span>
+        <span id="options_devices_">Devices</span>
+      </div>
+      <div class="options_" id="options_log_out">
+        <span class="material-symbols-outlined"> logout </span>
+        <span id="options_log_out_">Log Out</span>
+      </div>
+    </div>
+
+    <!---------------------------------------------------------------------------------------------------------------->
+
+    <!--MIDDLE CONTAINER-->
+    <div class="main_container" id="main_container">
+      <!-----------------------------------------HEADER START----------------------------------------------------------------------->
+      <!--HEARDER-->
+      <div class="row_1" id="row_1">
+        <div class="search_container">
+          <span id="account_balance_title">Account Balance:</span>
+          <span id="account_balance">ZMW 0</span>
+        </div>
+
+        <div class="user_container_">
+          <div class="notification" id="notification">
+            <span class="material-symbols-outlined" id="">
+              mark_email_unread
+            </span>
+          </div>
+          <div class="user_names_container">
+            <span class="material-symbols-outlined"> manage_accounts </span>
+            <span id="user_names">Timothy Mulenga</span>
+          </div>
+        </div>
+      </div>
+
+      <!-----------------------------------------HEADER END----------------------------------------------------------------------->
+
+      <!-----------------------------------------CONTAINER START----------------------------------------------------------------------->
+      <!--home container-->
+      <div class="home_container" id="home_container">
+        <div class="total_loans_container">
+          <div class="Total_Disbursements">
+            <span class="total_disbursement_title">Total Disbursements</span>
+            <span id="total_disbursement_amount_title">ZMW 0</span>
+          </div>
+
+          <div class="Total_Disbursements">
+            <span class="total_disbursement_title">Returns on Investments</span>
+            <span id="Returns_on_Investment_title">ZMW 0</span>
+          </div>
+        </div>
+        <!--DOWANLOADS_container HEADER-->
+        <div class="DOWANLOADS_container" id="ACCOUNTING_HEADER_container">
+
+
+          <div class="download_options">
+            <span class="material-symbols-outlined">
+              download
+            </span>
+            <div>
+
+
+              <select name="language" class="employee_filter" id="employee_filter">
+                <option value="Doanload Options" selected>Doanload Options</option>
+                <option value="Download pending loans">Download pending loans</option>
+                <option value="Male">Download approved loans</option>
+                <option value="Male">Download rejected loans</option>
+                <option value="Male">Download defaulted loans</option>
+                <option value="Male">Download all data</option>
+
+              </select>
+            </div>
+          </div>
+
+        </div>
+        <!--ACCOUNTING HEADER-->
+        <div class="ACCOUNTING_HEADER_container" id="ACCOUNTING_HEADER_container">
+          <div class="accounting_header_pending" id="accounting_header_pending">
+            <span>Pending Loans</span> <span id="Add_Loan">Add Loan</span>
+          </div>
+          <div class="accounting_header_successful" id="accounting_header_successful">
+            <span>Approved Loans</span>
+          </div>
+          <div class="accounting_header_failed" id="accounting_header_failed">
+            <span>Rejected Loans</span>
+          </div>
+          <div class="accounting_header_defaults" id="accounting_header_defaults">
+            <span>Defaults Loans</span>
+          </div>
+        </div>
+
+
+
+
+
+        <!-- PENDING LOANS LIST -->
+        <div class="pending_loans_list_container" id="pending_loans_list_container">
+
+
+          <div class="pending_loans_header">
+
+
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Client Names</span>
+
+
+            </div>
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Affiliate commission</span>
+
+
+            </div>
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Amount</span>
+
+
+            </div>
+
+
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Security</span>
+
+
+            </div>
+
+
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Application date</span>
+            </div>
+          </div>
+          <!-- pending_loans_list_row_content_holder -->
+          <div class="dismiss" id="pending_loans_list_row_content_holder">
+
+            <div class="approved_loans_list_row">
+
+
+
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">John Banda</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">ZMW 150</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="amount_transaction">ZMW 75,000</span>
+
+              </div>
+
+
+              <div class="approved_loan_detail_container">
+
+                <span class="amount_transaction">Car</span>
+
+              </div>
+
+
+              <div class="approved_loan_detail_container__">
+                <span class="date_pending">12 Feb 20223</span> <span class="material-symbols-outlined">
+                  read_more
+                </span>
+              </div>
+
+
+            </div>
+            <div class="approved_loans_list_row">
+
+
+
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">Moses Daka</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">ZMW 150</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="amount_transaction">ZMW 5,000</span>
+
+              </div>
+
+
+              <div class="approved_loan_detail_container">
+
+                <span class="amount_transaction">Device</span>
+
+              </div>
+
+
+              <div class="approved_loan_detail_container">
+                <span>12 Feb 20223</span>
+              </div>
+
+
+            </div>
+          </div>
+
+
+          <div class="loading_default_loan" id="loading_pending_loan_">
+
+            <span class="material-symbols-outlined" id="icon_loading_pending_loan">
+              paid
+            </span>
+          </div>
+
+        </div>
+
+        <!-- APPROVED LOANS LIST -->
+        <div class="approved_loans_list_container" id="approved_loans_list_container">
+          <div class="approved_loans_header">
+
+
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Client Names</span>
+
+
+            </div>
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Approved by</span>
+
+
+            </div>
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Amount</span>
+
+
+            </div>
+
+
+
+
+
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Date</span>
+            </div>
+          </div>
+
+          <div class="dismiss" id="approved_loans_list_row_content_holder">
+
+            <div class="approved_loans_list_row">
+
+
+
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">John Banda</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">John Banda</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="amount_transaction">ZMW 100</span>
+
+              </div>
+
+
+
+
+
+              <div class="approved_loan_detail_container">
+                <span>12 Feb 20223</span>
+              </div>
+
+
+            </div>
+            <div class="approved_loans_list_row">
+
+
+
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">Bruce Mundia</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">John Banda</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="amount_transaction">ZMW 100</span>
+
+              </div>
+
+
+
+
+
+              <div class="approved_loan_detail_container">
+                <span>12 Feb 20223</span>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="loading_default_loan" id="loading_approved_loan_">
+
+            <span class="material-symbols-outlined" id="icon_loading_approved_loan">
+              paid
+            </span>
+          </div>
+        </div>
+
+        <!-- REJECTED LOANS LIST -->
+        <div class="dismiss" id="rejected_loans_list_container">
+          <div class="rejected_loans_header">
+
+
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Client Names</span>
+
+
+            </div>
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Rejected by</span>
+
+
+            </div>
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Amount</span>
+
+
+            </div>
+
+
+
+
+
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Date</span>
+            </div>
+          </div>
+
+          <div class="dismiss" id="rejected_loans_list_row_content_holder">
+
+            <div class="approved_loans_list_row">
+
+
+
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">John Banda</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">John Banda</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="amount_transaction">ZMW 100</span>
+
+              </div>
+
+
+
+
+
+              <div class="approved_loan_detail_container">
+                <span>12 Feb 20223</span>
+              </div>
+
+
+            </div>
+            <div class="approved_loans_list_row">
+
+
+
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">Bruce Mundia</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">John Banda</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="amount_transaction">ZMW 100</span>
+
+              </div>
+
+
+
+
+
+              <div class="approved_loan_detail_container">
+                <span>12 Feb 20223</span>
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="loading_default_loan" id="loading_rejected_loan_">
+
+            <span class="material-symbols-outlined" id="icon_loading_rejected_loan">
+              paid
+            </span>
+          </div>
+        </div>
+
+        <!-- DEFAULT LOANS LIST -->
+        <div class="dismiss" id="default_loans_list_container">
+          <div class="default_loans_header">
+
+
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Client Names</span>
+
+
+            </div>
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Default Duration</span>
+
+
+            </div>
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Amount</span>
+
+
+            </div>
+
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Interest accrued</span>
+
+
+            </div>
+
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Total Charge</span>
+
+
+            </div>
+
+            <div class="approved_loan_detail_container_">
+              <span class="approved_loans_header_title">Date</span>
+            </div>
+          </div>
+
+          <div class="dismiss" id="default_loans_list_row_content_holder">
+
+            <div class="approved_loans_list_row">
+
+
+
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">John Banda</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="name_transaction">4 days</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="amount_transaction">ZMW 1000</span>
+
+              </div>
+
+
+              <div class="approved_loan_detail_container">
+
+                <span class="amount_transaction">ZMW 100</span>
+
+              </div>
+              <div class="approved_loan_detail_container">
+
+                <span class="amount_transaction">ZMW 1275</span>
+
+              </div>
+
+              <div class="approved_loan_detail_container">
+                <span>12 Feb 20223</span>
+              </div>
+
+
+            </div>
+
+          </div>
+
+          <div class="loading_default_loan" id="loading_default_loan_">
+
+            <span class="material-symbols-outlined" id="icon_loading_default_loan">
+              paid
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!--profile container-->
+      <div class="dismiss" id="user_profile_container">
+        <div class="icon_user_section">
+          <span class="material-symbols-outlined"> edit_square </span>
+        </div>
+        <div class="user_credentials">
+          <div class="row_user_credentials">
+            <span class="title_user_credentials">full names: </span><span class="title_user_credentials_"
+              id="profile_full_names">Dibwa
+              kabengele</span>
+
+          </div>
+          <div class="row_user_credentials">
+            <span class="title_user_credentials">phone #: </span><span class="title_user_credentials_"
+              id="profile_phone_number">0971067790</span>
+
+          </div>
+          <div class="row_user_credentials">
+            <span class="title_user_credentials">email: </span><span class="title_user_credentials_"
+              id="profile_email">kdibwa3@gmail.com</span>
+
+          </div>
+        </div>
+        <div class="empty_user_company_credentials" id="empty_user_company_credentials">
+          <span id="empty_company_title">No company associated with user</span>
+          <button id="create_company_pop">Create Company</button>
+        </div>
+        <div class="dismiss" id="user_company_credentials">
+
+
+          <div class="company_credentials_row">
+
+            <span class="title_user_credentials">Company Id: </span><span class="title_user_credentials_"
+              id="company_id_title">pending </span>
+          </div>
+
+          <div class="company_credentials_row">
+
+            <span class="title_user_credentials">Company Name: </span><span class="title_user_credentials_"
+              id="company_name_title">pending </span>
+          </div>
+          <div class="company_credentials_row">
+
+            <span class="title_user_credentials">Company type: </span><span class="title_user_credentials_"
+              id="company_type_title">pending </span>
+          </div>
+          <div class="company_credentials_row">
+
+            <span class="title_user_credentials"> employee count: </span><span class="title_user_credentials_"
+              id="company_employee_count_title">pending </span>
+          </div>
+        </div>
+      </div>
+
+      <!--Billing container-->
+      <div class="dismiss" id="billing_container">
+
+        <div class="refresh_verified_client_list_container">
+          <div class="refresh-verified_client_list" id="refresh_verified_client_list">
+            <span></span>
+            <span class="material-symbols-outlined" id="icon_refresh_verified_client_list">
+              refresh
+            </span>
+          </div>
+        </div>
+        <div class="subscription_content_holder">
+
+          <div class="yeah_subscription_container">
+            <span>Subcription Payment for the year</span> <span>2025 </span>
+
+          </div>
+
+          <div class="months_paid_container">
+
+            <div class="subscription_month">
+
+              <span class="month_sub_status_title">January</span> <span class="material-symbols-outlined">
+                check_circle
+              </span>
+            </div>
+            <div class="subscription_month">
+
+              <span class="month_sub_status_title">February</span> <span class="material-symbols-outlined">
+                check_circle
+              </span>
+            </div>
+            <div class="subscription_month">
+
+              <span class="month_sub_status_title">March</span> <span class="material-symbols-outlined">
+                check_circle
+              </span>
+            </div>
+            <div class="subscription_month">
+
+              <span class="month_sub_status_title">April</span> <span class="material-symbols-outlined">
+                check_circle
+              </span>
+            </div>
+            <div class="subscription_month">
+
+              <span class="month_sub_status_title">May</span> <span class="material-symbols-outlined">
+                check_circle
+              </span>
+            </div>
+            <div class="subscription_month">
+
+              <span class="month_sub_status_title">June</span> <span class="material-symbols-outlined">
+                check_circle
+              </span>
+            </div>
+            <div class="subscription_month">
+
+              <span class="month_sub_status_title">July</span> <span class="material-symbols-outlined">
+                check_circle
+              </span>
+            </div>
+            <div class="subscription_month">
+
+              <span class="month_sub_status_title">August</span> <span class="material-symbols-outlined">
+                check_circle
+              </span>
+            </div>
+            <div class="subscription_month">
+
+              <span class="month_sub_status_title">September</span> <span class="material-symbols-outlined">
+                check_circle
+              </span>
+            </div>
+            <div class="subscription_month">
+
+              <span class="month_sub_status_title">October</span> <span class="material-symbols-outlined">
+                check_circle
+              </span>
+            </div>
+            <div class="subscription_month">
+
+              <span class="month_sub_status_title">November</span> <span class="material-symbols-outlined">
+                check_circle
+              </span>
+            </div>
+            <div class="subscription_month">
+
+              <span class="month_sub_status_title">December</span> <span class="material-symbols-outlined"
+                id="December_sub_status">
+                check_circle
+              </span>
+            </div>
+          </div>
+
+
+
+
+
+
+        </div>
+
+        <div class="billing_options_container" id="billing_options_container">
+
+          <div class="billing_options_payment" id="billing_options_mobile_payment">
+
+            <span>Mobile Payment</span>
+          </div>
+          <span>or</span>
+          <div class="billing_options_payment" id="billing_options_transfer_payment">
+
+            <span>Transfer Payment</span>
+          </div>
+        </div>
+        <!-- MOBILE PAYMENT SECTION SUB PAYMENT-->
+        <div class="dismiss" id="mobile_payment_option_section_billing">
+
+          <div class="back_button_container_billing" id="back_button_container_mobile_payment_billing">
+
+            <span class="material-symbols-outlined">
+              arrow_back
+            </span>
+
+          </div>
+          <input type="text" placeholder="Mobile Number (096xxxxxxxx)" id="mobile_number_payment_input_billing">
+          <div id="mobile_number_payment_button">
+            <span class="dismiss" id="loading_icon_mobile_payment">
+              data_usage
+            </span>
+            <span>PAY</span>
+
+          </div>
+
+          <div class="payment_options">
+            <img src="./images/zamtel_icon.png" alt="" width="30" height="30">
+            <img src="./images/mtn_icon.jpg" alt="" width="30" height="30">
+          </div>
+        </div>
+
+        <!-- TRANSFER MONEY SECTION SUB PAYMENT -->
+        <div class="dismiss" id="transfer_payment_option_section_billing">
+
+          <div class="back_button_container" id="back_button_container_transfer_payment_billing">
+
+            <span class="material-symbols-outlined">
+              arrow_back
+            </span>
+
+          </div>
+          <input type="text" placeholder="Transaction Id" class="mobile_number_transfer_payment_input"
+            id="Transaction_Id_transfer_payment_input_billing">
+          <input type="text" placeholder="Receiver Number" class="mobile_number_transfer_payment_input"
+            id="Receiver_Number_transfer_payment_input_billing">
+          <input type="text" placeholder="Sender Number" class="mobile_number_transfer_payment_input"
+            id="Sender_Number_transfer_payment_input_billing">
+          <input type="text" placeholder="Amount" class="mobile_number_transfer_payment_input"
+            id="amount_transfer_payment_input_billing">
+
+
+          <div id="transfer_payment_button_billing">
+            <span class="dismiss" id="loading_icon_transfer_payment">
+              data_usage
+            </span>
+            <span>Submit</span>
+
+          </div>
+
+        </div>
+      </div>
+      <!--accounting list-->
+      <div class="dismiss" id="acccounting_list_container">
+        <div class="withdraws_and_deposits">
+          <div class="deposit_withdraws_and_deposits" id="deposit_withdraws_and_deposits">
+            <span class="material-symbols-outlined"> arrow_downward </span><span>Deposit</span>
+          </div>
+
+          <div class="transfer_withdraws_and_deposits" id="transfer_withdraws_and_deposit">
+            <span class="material-symbols-outlined"> arrow_upward </span><span>Transfer</span>
+          </div>
+        </div>
+        <div class="transaction_HEADER_container">
+          <div class="search_container_transaction">
+            <div>
+
+
+              <select name="language" class="employee_filter" id="employee_filter">
+                <option value="Male" selected>Filter by</option>
+                <option value="Male">Transaction ID</option>
+                <option value="Male">Transaction status</option>
+                <option value="Male">Transaction Amount</option>
+
+
+              </select>
+            </div>
+            <input type="text" placeholder="search transaction" class="search_transaction_input"
+              id="search_transaction_input" /> <span class="material-symbols-outlined" id="icon_">
+              search
+            </span>
+          </div>
+          <div class="add_transaction_pop_up" id="add_transaction_pop_up">
+            <span>Add Transaction</span>
+            <span class="material-symbols-outlined">
+              account_balance_wallet
+            </span>
+          </div>
+        </div>
+        <div class="refresh_employee_list_container" id="refresh_employee_list_container">
+          <div class="refresh-verified_client_list" id="icon_container_refresh_transaction_list">
+            <span></span>
+            <span class="material-symbols-outlined" id="icon_refresh_transaction_list">
+              refresh
+            </span>
+          </div>
+        </div>
+        <!--empty list container-->
+        <div class="empty_transaction_history_list" id="empty_transaction_history_list">
+          <span>No Transactions</span>
+        </div>
+        <!-- transaction_history_list_container -->
+        <div class="dismiss" id="transaction_history_list_container">
+          <div class="transaction_details_container">
+            <div class="transaction_contents">
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Sender:</span>
+                <span class="transaction_title_">James Banda</span>
+              </div>
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Receiver:</span>
+                <span class="transaction_title_">Cindy Chilufya</span>
+              </div>
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Amount:</span>
+                <span class="transaction_title_">ZMW 1000</span>
+              </div>
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Transaction Type:</span>
+                <span class="transaction_title_">Cash</span>
+              </div>
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Date:</span>
+                <span class="transaction_title_">20 Dec 2025</span>
+              </div>
+            </div>
+            <div class="account_type_in">
+              <span>CASH IN</span>
+            </div>
+          </div>
+          <div class="transaction_details_container">
+            <div class="transaction_contents">
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Sender:</span>
+                <span class="transaction_title_">James Banda</span>
+              </div>
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Receiver:</span>
+                <span class="transaction_title_">Precious Kunda</span>
+              </div>
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Amount:</span>
+                <span class="transaction_title_">ZMW 5000</span>
+              </div>
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Transaction Type:</span>
+                <span class="transaction_title_">Cash</span>
+              </div>
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Date:</span>
+                <span class="transaction_title_">11 May 2024</span>
+              </div>
+            </div>
+            <div class="account_type_in">
+              <span>CASH IN</span>
+            </div>
+          </div>
+          <div class="transaction_details_container">
+            <div class="transaction_contents">
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Sender:</span>
+                <span class="transaction_title_">James Banda</span>
+              </div>
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Receiver:</span>
+                <span class="transaction_title_">Danial Sakala</span>
+              </div>
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Amount:</span>
+                <span class="transaction_title_">ZMW 200</span>
+              </div>
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Transaction Type:</span>
+                <span class="transaction_title_">Mobile Money</span>
+              </div>
+              <div class="transaction_contents_row">
+                <span class="transaction_title">Date:</span>
+                <span class="transaction_title_">09 Jan 2024</span>
+              </div>
+            </div>
+            <div class="account_type_out">
+              <span>CASH OUT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--loan settings container DISPLAY-->
+      <div class="dismiss" id="loan_settings_container_display">
+        <span class="material-symbols-outlined" id="edit_settings_icon">
+          edit_square
+        </span>
+        <div class="interest_container">
+          <span class="loan_setting_titles_">Interest Charges</span>
+          <span class="loan_setting_titles" id="loan_setting_interest_duration">1 week</span>
+          <span class="loan_setting_titles" id="loan_setting_duration_charge">10%</span>
+        </div>
+
+        <div class="interest_container">
+          <span class="loan_setting_titles_">Loan security preference</span>
+          <span class="loan_setting_titles" id="loan_setting_security_preference">Collateral Based</span>
+        </div>
+
+        <div class="interest_container">
+          <span class="loan_setting_titles_">Reloaning Policy: Allows re-loaning</span>
+          <span class="loan_setting_titles" id="loan_setting_Reloaning_Policy">Yes</span>
+        </div>
+
+
+      </div>
+
+
+      <!--loan settings loading-->
+      <div class="dismiss" id="loan_settings_container_loading">
+
+
+        <span>Loading</span>
+        <span class="material-symbols-outlined" id="loan_setting_loading">
+          data_usage
+        </span>
+
+      </div>
+
+
+      <!--loan settings container INMPUTES-->
+      <div class="dismiss" id="loan_settings_container">
+        <div class="interest_container">
+          <span class="loan_setting_titles">Whats the interest duration you prefer?</span>
+          <div class="genre">
+            <select name="language" class="gender" id="interestDuration_options">
+              <option value="Interest Duration" selected>Interest Duration</option>
+              <option value="Daily">Daily</option>
+
+              <option value="1 week">1 week</option>
+              <option value="2 week">2 week</option>
+              <option value="3 week">3 week</option>
+              <option value="4 week">4 week</option>
+            </select>
+            <input class="interest_charge" type="text" placeholder="Interst Charge (0-100%)" id="interest_charge" />
+          </div>
+        </div>
+
+        <div class="interest_container">
+          <span class="loan_setting_titles">Loan security preference</span>
+          <div class="genre">
+            <span> Interest Duration</span>
+
+            <select name="language" class="gender" id="Loan_security">
+              <option value="Loan security" selected>Loan security</option>
+              <option value="Salary Backed">Salary Backed</option>
+
+              <option value="Collateral Backed">Collateral Backed</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="interest_container">
+          <span class="loan_setting_titles">Reloaning Policy: Do you allow re-loaning</span>
+          <div class="genre">
+            <select name="language" class="gender" id="Reloaning_Policy">
+              <option value="No" selected>No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="interest_container_" id="loan_settings_save_button">
+          <div class="cancel_loan_settings" id="cancel_loan_settings">
+
+
+            <span>Cancel</span>
+          </div>
+
+          <div class="save_changes_button" id="save_loan_changes_button">
+            <span class="dismiss" id="load_loan_settings_save_button"> data_usage </span>
+
+            <span id="save_loan_changes_button_title">save changes</span>
+          </div>
+        </div>
+      </div>
+
+      <!--employees list-->
+      <div class="dismiss" id="employee_container">
+        <!--HOME HEADER-->
+        <div class="employee_HEADER_container">
+          <div class="search_container_employee">
+            <div>
+
+
+              <select name="language" class="employee_filter" id="employee_filter">
+                <option value="Male" selected>Filter by</option>
+                <option value="Male">Employee ID</option>
+                <option value="Male">Employee status</option>
+                <option value="Male">Employee phone #</option>
+                <option value="Male">Employee Full Names</option>
+
+              </select>
+            </div>
+            <input type="text" placeholder="search employee" class="search_employee_input" id="search_employee_input" />
+            <span class="material-symbols-outlined" id="icon_employee_">
+              search
+            </span>
+          </div>
+          <div class="transaction_type_content_holder_active" id="add_employee_pop_up">
+            <span>Add Employee</span>
+            <img src="./images/add-user.png" alt="" width="26" height="26" />
+          </div>
+        </div>
+        <div class="refresh_employee_list_container" id="refresh_employee_list_container">
+          <div class="refresh-verified_client_list" id="refresh_employee_list">
+            <span></span>
+            <span class="material-symbols-outlined" id="icon_employee_client_list">
+              refresh
+            </span>
+          </div>
+        </div>
+
+
+
+
+        <!--empty list container-->
+        <div class="dismiss" id="empty_employee_history_list">
+          <span>No Employees</span>
+        </div>
+        <!-- employee list container -->
+        <div class="employee_list_container" id="employee_list_container">
+          <!-- <div class="row_user_detains_content_holder" id="user_details_1">
+            <div class="column_user">
+              <div class="row_user">
+                <span class="employee_sub_titles">Full Names: </span><span class="employee_titles"> Brian Mulenga</span>
+              </div>
+
+              <div class="row_user">
+                <span class="employee_sub_titles">Phone #:</span><span class="employee_titles">0963274070</span>
+              </div>
+
+              <div class="row_user">
+                <span class="employee_sub_titles">Approved Loans #:</span><span class="employee_titles">0</span>
+              </div>
+              <div class="row_user">
+                <span class="employee_sub_titles">Approved Loans (V):</span><span class="employee_titles">ZMW
+                  5000</span>
+              </div>
+              <div class="row_user">
+                <span class="employee_sub_titles">Employee Status:</span><span class="Employee_Status">ACTIVE</span>
+              </div>
+            </div>
+            <div class="dismiss" id="icon_user_section_check">
+              <img src="./images/check.png" alt="" width="20" />
+            </div>
+            <div class="icon_user_section">
+              <span class="material-symbols-outlined"> edit_square </span>
+            </div>
+          </div> -->
+
+
+
+
+        </div>
+      </div>
+
+      <!--verified client list-->
+      <div class="dismiss" id="verified_client_container">
+        <!--HOME HEADER-->
+        <div class="HOME_HEADER_container" id="HOME_HEADER_container">
+          <div class="add_verified_client_pop_up" id="add_verified_client_pop_up">
+            <span>Add Client</span>
+            <span class="material-symbols-outlined"> add_box </span>
+          </div>
+        </div>
+        <div class="refresh_verified_client_list_container">
+          <div class="refresh-verified_client_list" id="refresh_verified_client_list">
+            <span></span>
+            <span class="material-symbols-outlined" id="icon_refresh_verified_client_list">
+              refresh
+            </span>
+          </div>
+        </div>
+
+        <!--empty list container-->
+        <div class="empty_verified_client_list" id="empty_verified_client_list">
+          <span>No Verified Clients</span>
+        </div>
+        <!--verified list container-->
+        <div class="dismiss" id="verified_client_list_container">
+          <div class="row_user_detains_content_holder" id="user_details_1">
+            <div class="column_user">
+              <div class="row_user">
+                <span class="verified_client_title">Full Names: </span><span class="verified_client_title_"> Brian
+                  Mulenga</span>
+              </div>
+
+              <div class="row_user">
+                <span class="verified_client_title">Phone #</span><span class="verified_client_title_">0963274070</span>
+              </div>
+              <div class="row_user">
+                <span class="verified_client_title">Credit Score: </span><span class="verified_client_title_">0.5</span>
+              </div>
+              <div class="row_user">
+                <span class="verified_client_title">Active Loan: </span><span class="verified_client_title_">ZMW
+                  2000</span>
+              </div>
+            </div>
+
+            <div class="icon_user_section">
+              <span class="material-symbols-outlined"> edit_square </span>
+            </div>
+          </div>
+
+          <div class="row_user_detains_content_holder" id="user_details_1">
+            <div class="column_user">
+              <div class="row_user">
+                <span class="verified_client_title">Full Names: </span><span class="verified_client_title_"> James
+                  Chileshe</span>
+              </div>
+
+              <div class="row_user">
+                <span class="verified_client_title">Phone #</span><span class="verified_client_title_">0963274070</span>
+              </div>
+              <div class="row_user">
+                <span class="verified_client_title">Credit Score: </span><span class="verified_client_title_">0.5</span>
+              </div>
+              <div class="row_user">
+                <span class="verified_client_title">Active Loan: </span><span class="verified_client_title_">ZMW
+                  2000</span>
+              </div>
+            </div>
+
+            <div class="icon_user_section">
+              <span class="material-symbols-outlined"> edit_square </span>
+            </div>
+          </div>
+          <div class="row_user_detains_content_holder" id="user_details_1">
+            <div class="column_user">
+              <div class="row_user">
+                <span class="verified_client_title">Full Names: </span><span class="verified_client_title_"> Fridah
+                  Konde</span>
+              </div>
+
+              <div class="row_user">
+                <span class="verified_client_title">Phone #</span><span class="verified_client_title_">0963274070</span>
+              </div>
+              <div class="row_user">
+                <span class="verified_client_title">Credit Score: </span><span class="verified_client_title_">0.8</span>
+              </div>
+              <div class="row_user">
+                <span class="verified_client_title">Active Loan: </span><span class="verified_client_title_">ZMW
+                  10,000</span>
+              </div>
+            </div>
+
+            <div class="icon_user_section">
+              <span class="material-symbols-outlined"> edit_square </span>
+            </div>
+          </div>
+          <div class="row_user_detains_content_holder" id="user_details_1">
+            <div class="column_user">
+              <div class="row_user">
+                <span class="verified_client_title">Full Names: </span><span class="verified_client_title_"> Joseph
+                  Zulu</span>
+              </div>
+
+              <div class="row_user">
+                <span class="verified_client_title">Phone #</span><span class="verified_client_title_">0963274070</span>
+              </div>
+              <div class="row_user">
+                <span class="verified_client_title">Credit Score: </span><span class="verified_client_title_">0.7</span>
+              </div>
+              <div class="row_user">
+                <span class="verified_client_title">Active Loan: </span><span class="verified_client_title_">ZMW
+                  5000</span>
+              </div>
+            </div>
+
+            <div class="icon_user_section">
+              <span class="material-symbols-outlined"> edit_square </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--loading container-->
+      <div class="dismiss" id="loading_container">
+        <img id="loading_container_image" src="./images/icons8-loading-100.png" alt="" width="40" height="40" />
+        <span id="loading_container_title">Loading...</span>
+      </div>
+
+
+      <!---------------------------------------------CONTAINER END----------------------------------------------------------------------->
+
+      <!-----------------------------------------DIALOGS START------------------------------------------------------------------------------>
+
+
+
+
+
+      <!--PENDING LOAN DIALOG-->
+      <div class="dismiss" id="pending_loan_dialog">
+        <div class="pending_loan_dialog_dialog_content_holder">
+
+
+          <div class="section_active_pending_loan">
+            <div class="client_section" id="client_section">
+              <span>Client Details</span>
+
+            </div>
+            <div class="next_of_kin_section" id="next_of_kin_section">
+              <span>Next of kin Details</span>
+            </div>
+          </div>
+
+          <div class="client_details_container" id="client_details_container">
+
+            <div class="pending_loan_id_container">
+              <span>ID: </span> <span id="pending_loan_id">ID: </span>
+            </div>
+            <div class="current_account_title">
+              <span>Date: </span> <span id="pending_loan_date">20 Mar 2024</span>
+            </div>
+
+            <div class="current_account_title_">
+              <span class="pending_loan_title">Full Name: </span><span class="pending_loan_sub_title"
+                id="pending_loan_client_full_names">Lee Kabengele</span>
+            </div>
+
+            <div class="current_account_title_">
+              <span class="pending_loan_title">Phone #: </span> <span class="pending_loan_sub_title"
+                id="pending_loan_client_phone_number">0971067740</span>
+            </div>
+            <div class="current_account_title_">
+              <span class="pending_loan_title">Address: </span> <span class="pending_loan_sub_title"
+                id="pending_loan_client_address">10104 Kabwata site
+                and
+                service</span>
+            </div>
+          </div>
+
+          <div class="dismiss" id="next_of_kin_details_container">
+
+            <div class="pending_loan_id_container">
+              <span>ID: </span> <span id="pending_loan_id_next_of_kin">ID: </span>
+            </div>
+            <div class="current_account_title">
+              <span>Date: </span> <span id="pending_loan_date_next_of_kin">20 Mar 2024</span>
+            </div>
+
+            <div class="current_account_title_">
+              <span class="pending_loan_title">Full Name: </span><span class="pending_loan_sub_title"
+                id="pending_loan_next_of_kin_full_names">Lee Kabengele</span>
+            </div>
+
+            <div class="current_account_title_">
+              <span class="pending_loan_title">Phone #: </span> <span class="pending_loan_sub_title"
+                id="pending_loan_next_of_kin_phone_number">0971067740</span>
+            </div>
+            <div class="current_account_title_">
+              <span class="pending_loan_title">Address: </span> <span class="pending_loan_sub_title"
+                id="pending_loan_next_of_kin_address">10104 Kabwata site
+                and
+                service</span>
+            </div>
+          </div>
+
+
+
+
+
+
+          <div class="pending_loan_accounting">
+            <div class="current_account_title_">
+              <span class="pending_loan_title">Loan Amount: </span> <span class="pending_loan_sub_title"
+                id="pending_loan_amount">ZMW
+                1000</span>
+            </div>
+            <div class="current_account_title_">
+              <span class="pending_loan_title">Loan Interest: </span> <span class="pending_loan_sub_title"
+                id="pending_loan_interest"> 30%</span>
+            </div>
+            <div class="current_account_title_">
+              <span class="pending_loan_title">Interest Value: </span> <span class="pending_loan_sub_title"
+                id="pending_loan_interest_VALUE"> 30%</span>
+            </div>
+            <div class="current_account_title_">
+              <span class="pending_loan_title">ROI: </span> <span class="pending_loan_sub_title"
+                id="pending_loan_RIO">ZMW 1240</span>
+            </div>
+            <div class="current_account_title_">
+              <span class="pending_loan_title">Pay Date: </span> <span class="pending_loan_sub_title"
+                id="pending_loan_Pay_Date">ZMW 1240</span>
+            </div>
+
+          </div>
+
+
+          <!-- button holder-->
+          <div class="button_holder">
+            <div class="submit_button_container" id="APPROVE_LOAN_BUTTON">
+
+              <img class="dismiss" id="loading_icon_APPROVE_LOAN" src="./images/icons8-loading-100.png" alt=""
+                width="20" height="20" />
+              <span>Approve</span>
+            </div>
+
+            <div class="cancel_REJECT_LOAN_BUTTON" id="REJECT_LOAN_BUTTON">
+              <img class="dismiss" id="loading_icon_REJECT_LOAN" src="./images/icons8-loading-100.png" alt="" width="20"
+                height="20" />
+              <span>Reject</span>
+            </div>
+            <div id="hide_pending_loan_dialog_button">
+              <span>hide</span>
+              <span class="material-symbols-outlined">
+                keyboard_arrow_down
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MONEY TRANSFER SECTION ------------------------------------------------>
+      <div class="dismiss" id="TRANSACTION_SECTION">
+
+        <div class="transaction_section_content_holder" id="transaction_section_content_holder">
+          <span class="fetched_name" id="fetched_name">Fetching account name...</span>
+
+          <input class="text_inputs_" type="tel" placeholder="Amount" id="TRANSACTION_Amount" />
+
+
+
+
+          <div class="phone_number_and_loading_icon_container">
+            <input class="text_inputs__" type="tel" placeholder="Phone #" id="TRANSACTION_Phone_number" />
+            <img src="./images/zatu_icon.png" class="dismiss" id="loading_icon_name_fetching" width="30" height="30">
+
+          </div>
+
+
+          <div class="dismiss" id="Transactions_image_container">
+            <img src="./images/mtn_icon.jpg" alt="" id="TRANSACTION_network_image" width="30" height="30" />
+          </div>
+
+          <div class="Transfer_Medium_Container" id="Transfer_Medium_Container">
+            <select name="language" class="employee_filter" id="Transfer_Medium_filter">
+              <option value="Transfer Medium" selected>Transfer Medium</option>
+              <option value="Direct_Mobile_Transfer">Direct Mobile Transfer</option>
+              <option value="Zatu_Wallet_Transfer">Zatu Wallet Transfer</option>
+            </select>
+          </div>
+
+          <div class="LOAN_SUBMIT_BUTTON" id="TRANSACTION_SUBMIT_BUTTON">
+            <span class="dismiss" id="loading_transfer"> data_usage </span><span
+              id="TRANSACTION_SUBMIT_BUTTON_title">Send</span>
+          </div>
+          <div class="CANCEL_TRANSACTION_BUTTON" id="CANCEL_TRANSACTION_BUTTON">
+            <span>Cancel</span>
+          </div>
+
+
+          <span class="transaction_message_pop" id="transaction_message_pop">Dial *115# in case transaction doesn't
+            pop</span>
+        </div>
+
+      </div>
+      <!--SETTINGS DIALOG-->
+      <div class="dismiss" id="caution_dialog"></div>
+
+      <!--EDIT EMPLOYEE DIALOG-->
+      <div class="dismiss" id="edit_employee_dialog">
+        <div class="edit_employee_dialog_content_holder">
+
+          <div class="suspension_active_container">
+
+            <span class="material-symbols-outlined" id="delete_employee"> delete</span>
+
+
+            <div class="active_or_suspended" id="active_or_suspended">
+              <img class="dismiss" id="loading_icon_active_or_suspended_edit_employee"
+                src="./images/icons8-loading-100.png" alt="" width="27">
+
+              <span>suspended</span>
+              <label class="switch" id="switch_active_or_suspended">
+                <input type="checkbox" checked id="active_or_suspended_input">
+                <span class="slider round"></span>
+
+              </label>
+              <span>active</span>
+
+            </div>
+          </div>
+
+          <div class="edit_employee_inout_container">
+            <div class="edit_employee_names">
+              <input class="edit_employee_" type="text" name="" id="edit_employee_First_Name" placeholder="First Name">
+              <input class="edit_employee_" type="text" name="" id="edit_employee_Last_Name" placeholder="Last Name">
+            </div>
+
+
+
+
+            <div class="update_button_edit_employee" id="update_button_edit_employee">
+
+              <img class="dismiss" id="loading_icon_edit_employee" src="./images/icons8-loading-100.png" alt=""
+                width="27" height="27" />
+              <span>update</span>
+            </div>
+          </div>
+
+
+
+
+        </div>
+      </div>
+
+      <!--ADD EMPLOYEE DIALOG-->
+      <div class="dismiss" id="user_dialog">
+        <div class="employee_dialog_content_holder">
+
+          <div class="name_content_holder">
+            <input id="employee_first_name_input" class="name_inputs" type="text" placeholder="First Name" />
+            <input id="employee_last_name_input" class="name_inputs" type="text" placeholder="Last Name" />
+          </div>
+          <div class="credential_content_holder">
+            <input id="employee_phone_number_input" class="credential_inputs" type="tel"
+              placeholder="Phone Number (097106****)" />
+            <input id="employee_whatsapp_number_input" class="credential_inputs" type="tel"
+              placeholder="whatsapp Number (optional)" />
+
+            <div class="genre">
+              <span class="gender"> Gender</span>
+
+              <select name="language" class="gender" id="employee_gender_registration">
+                <option value="Unselected" selected>Unselected</option>
+                <option value="Male">Male</option>
+
+                <option value="Male">Female</option>
+              </select>
+            </div>
+            <div class="employee_permission_container" id="employee_permission_container">
+
+              <span id="employee_permission_title">Employee permissions</span>
+              <div>
+
+
+
+                <input type="checkbox" id="can_approve_loans" name="permissions" value="can_approve_loans" />
+                <label for="can_approve_loans">Can approve loans</label>
+              </div>
+              <div>
+
+
+
+                <input type="checkbox" id="Can_record_transactions" name="permissions"
+                  value="Can_record_transactions" />
+                <label for="can_record_transactions">Can record transactions</label>
+              </div>
+
+              <div>
+
+
+
+                <input type="checkbox" id="Can_edit_sensetive_parts_of_company_data" name="permissions"
+                  value="can_edit_sensetive_parts_of_company_data" />
+                <label for="can_edit_sensetive_parts_of_company_data">Can edit sensetive parts of company data</label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- button holder-->
+          <div class="button_holder">
+            <div class="submit_button_container" id="add_employee_button">
+              <img class="dismiss" id="checkmark_route" src="./images/check.png" alt="" width="27" height="27" />
+              <img class="dismiss" id="loading_icon_employee" src="./images/icons8-loading-100.png" alt="" width="27"
+                height="27" />
+              <span class="">Add employee</span>
+            </div>
+
+            <button class="cancel_button" id="cancel_button_student">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!--ADD VERIFIED DIALOG-->
+      <div class="dismiss" id="verified_client_dialog">
+        <div class="verified_client_dialog_content_holder">
+          <div class="name_content_holder">
+            <input id="verified_client_first_name_input" class="name_inputs" type="text" placeholder="First Name" />
+            <input id="verified_client_last_name_input" class="name_inputs" type="text" placeholder="Last Name" />
+          </div>
+          <div class="credential_content_holder">
+            <input id="verified_client_phone_number_input" class="credential_inputs" type="text"
+              placeholder="Phone Number (097106****)" />
+            <div class="genre">
+              <span class="gender"> Gender</span>
+
+              <select name="language" class="gender" id="gender_verified_client">
+                <option value="Male">Male</option>
+
+                <option value="Male" selected>Female</option>
+              </select>
+            </div>
+            <div class="slidecontainer">
+
+              <div class="credit_score_title_container">
+
+                <span>Credit score</span>
+              </div>
+
+              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+
+              <span id="demo">Credit score: 1</span>
+            </div>
+          </div>
+
+          <!-- button holder-->
+          <div class="button_holder">
+            <div class="submit_button_container" id="add_verified_client_button">
+              <img class="dismiss" id="checkmark_verified_client" src="./images/check.png" alt="" width="25"
+                height="25" />
+              <img class="dismiss" id="loading_icon_verified_client" src="./images/icons8-loading-100.png" alt=""
+                width="27" height="27" />
+              <span id="Add_Client_title">Add Client</span>
+            </div>
+
+            <button class="cancel_button" id="cancel_button_verified_client">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!--EDIT VERIFIED DIALOG-->
+      <div class="dismiss" id="edit_verified_client_dialog">
+        <div class="edit_verified_client_dialog_content_holder">
+          <div class="verified_client_ID">
+            <span id="verified_client_ID">User already exist</span>
+          </div>
+          <div class="verified_status">
+            <span id="verified_status">User already exist</span>
+          </div>
+          <div class="name_content_holder">
+            <input id="edit_verified_client_first_name_input" class="name_inputs" type="text"
+              placeholder="First Name" />
+            <input id="edit_verified_client_last_name_input" class="name_inputs" type="text" placeholder="Last Name" />
+          </div>
+          <div class="credential_content_holder">
+            <input id="edit_verified_client_phone_number_input" class="credential_inputs" type="text"
+              placeholder="Phone Number (097106****)" />
+            <div class="genre">
+              <span class="gender"> Gender</span>
+
+              <select name="language" class="gender" id="edit_gender_verified_client">
+                <option value="Male">Male</option>
+
+                <option value="Male" selected>Female</option>
+              </select>
+            </div>
+            <input id="edit_verified_client_credit_score_input" class="credential_inputs" type="text"
+              placeholder="Credit Score (0-1)" />
+          </div>
+
+          <!-- button holder-->
+          <div class="button_holder">
+            <div class="submit_button_container" id="edit_verified_client_button">
+              <img class="dismiss" id="edit_checkmark_verified_client" src="./images/check.png" alt="" width="25"
+                height="25" />
+              <img class="dismiss" id="edit_loading_icon_verified_client" src="./images/icons8-loading-100.png" alt=""
+                width="27" height="27" />
+              <span id="edit_Client_title">Update</span>
+            </div>
+            <div class="edit_Suspend_button_verified_client" id="edit_Suspend_button_verified_client">
+              <img class="dismiss" id="edit_checkmark_verified_client_Suspend_button" src="./images/check.png" alt=""
+                width="25" height="25" />
+              <img class="dismiss" id="edit_loading_icon_verified_client_Suspend_button"
+                src="./images/icons8-loading-100.png" alt="" width="25" height="25" />
+              <span id="edit_Suspend_button_title">Suspend</span>
+            </div>
+            <button class="cancel_button" id="edit_cancel_button_verified_client">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!--ADD TRANSACTION DIALOG-->
+      <div class="dismiss" id="add_transaction_dialog">
+        <div class="add_transaction_dialog_content_holder">
+          <div class="name_content_holder">
+            <input id="add_transaction_first_name_input" class="name_inputs" type="text" placeholder="First Name" />
+            <input id="add_transaction_last_name_input" class="name_inputs" type="text" placeholder="Last Name" />
+          </div>
+          <div class="credential_content_holder">
+            <input id="add_transaction_phone_number_input" class="credential_inputs" type="text"
+              placeholder="Phone Number (097106****)" />
+
+
+            <input id="add_transaction_Amount_input" class="add_transaction_Amount_input" type="text"
+              placeholder="Amount" />
+            <div class="transaction_type_container">
+              <span class="gender"> Transaction Type</span>
+
+              <select name="language" class="gender" id="add_transaction_Transaction_Type">
+
+                <option value="Transaction Type" selected>Transaction Type</option>
+                <option value="Cash">Cash</option>
+
+                <option value="Electronic Payment">Electronic Payment</option>
+              </select>
+            </div>
+            <input id="add_transaction_id_input" class="dismiss" type="text" placeholder="Transaction ID" />
+            <div class="transaction_type_container">
+              <span class="gender"> Transaction Mode</span>
+
+              <select name="language" class="gender" id="add_transaction_Transaction_Mode">
+
+                <option value="Transaction Mode" selected>Transaction Mode</option>
+                <option value="Cash In">Cash In</option>
+
+                <option value="Cash Out">Cash Out</option>
+              </select>
+            </div>
+
+
+
+            <!-- button holder-->
+            <div class="transaction_button_holder">
+              <div class="add_transaction_button" id="add_transaction_button">
+                <img class="dismiss" id="checkmark_add_transaction" src="./images/check.png" alt="" width="25"
+                  height="25" />
+                <img class="dismiss" id="loading_icon_add_transaction" src="./images/icons8-loading-100.png" alt=""
+                  width="25" height="25" />
+                <span id="add_transaction_title">Add Transaction</span>
+              </div>
+
+              <button class="add_transaction_cancel_button" id="cancel_button_add_add_transaction">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-----------------------------------------DIALOGS END----------------------------------------------------------------------->
+
+        <!--EMPTY LIST-->
+        <div class="dismiss" id="row_3">
+          <span id="empty_list">--EMPTY LIST--</span>
+        </div>
+      </div>
+    </div>
+    <!--ADD COMPANY DIALOG-->
+    <div class="dismiss" id="add_company_dialog">
+      <div class="verified_client_dialog_content_holder">
+
+        <div class="credential_content_holder">
+          <input id="add_company_company_name_input" class="credential_inputs" type="text" placeholder="company name" />
+          <input id="add_company_phone_number_input" class="credential_inputs" type="text" placeholder="phone #" />
+          <input id="add_company_email_input" class="credential_inputs" type="text" placeholder="email" />
+          <div class="genre">
+            <span class="gender"> Company type</span>
+
+            <select name="language" class="gender" id="add_company_company_type">
+              <option value="unselected" selected>unselected</option>
+              <option value="public company">public company</option>
+              <option value="unlimited company">unlimited company</option>
+              <option value="limited company">limited company</option>
+              <option value="sole proprietorship">sole proprietorship</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- button holder-->
+        <div class="button_holder">
+          <div class="submit_button_container" id="register_company_button">
+            <img class="dismiss" id="checkmark_verified_client" src="./images/check.png" alt="" width="25"
+              height="25" />
+            <img class="dismiss" id="loading_Register_Company" src="./images/icons8-loading-100.png" alt="" width="27"
+              height="27" />
+            <span id="Add_Client_title">Register Company</span>
+          </div>
+
+          <button class="cancel_button" id="cancel_button_register_company">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <!--ADD LOAN DIALOG-->
+    <div class="dismiss" id="add_loan_dialog">
+      <div class="add_loan_dialog_content_holder">
+
+        <div class="stepper_indicator">
+
+          <div class="stepper_stage">
+            <span>Client</span><span class="material-symbols-outlined" id="client_inputs_icon">
+              radio_button_unchecked
+            </span>
+          </div>
+
+
+          <div class="divider"></div>
+          <div class="stepper_stage">
+            <span>Next of kin</span><span class="material-symbols-outlined" id="Next_of_kin_icon">
+              radio_button_unchecked
+            </span>
+          </div>
+          <div class="divider"></div>
+          <div class="stepper_stage">
+            <span>Complete</span><span class="material-symbols-outlined" id="complete_add_loan_icon">
+              radio_button_unchecked
+            </span>
+          </div>
+        </div>
+
+        <div class="client_inputs" id="client_inputs">
+          <div class="client_inputs_text_input">
+            <span class="material-symbols-outlined">
+              language
+            </span>
+            <select name="language" class="genre_" id="country_client_inputs">
+              <option value="select country" selected>Select country</option>
+              <option value="Angola">Angola</option>
+              <option value="Botswana">Botswana</option>
+              <option value="Congo">Congo</option>
+              <option value="Malawi">Malawi</option>
+              <option value="Kenya">Kenya</option>
+              <option value="Namibia">Namibia</option>
+              <option value="South Africa">South Africa</option>
+              <option value="Tanzania">Tanzania</option>
+              <option value="Zimbabwe">Zimbabwe</option>
+              <option value="Zambia">Zambia</option>
+            </select>
+          </div>
+          <input class="client_inputs_text_input" type="text" placeholder="First Name" id="add_loan_First_Name">
+          <input class="client_inputs_text_input" type="text" placeholder="Last Name" id="add_loan_Last_Name">
+          <input class="client_inputs_text_input" type="text" placeholder="NRC #" id="add_loan_NRC_number">
+          <input class="client_inputs_text_input" type="text" placeholder="phone #" id="add_loan_phone_number">
+          <input class="client_inputs_text_input" type="text" placeholder="Town" id="add_loan_town">
+          <input class="client_inputs_text_input" type="text" placeholder="Address" id="add_loan_address">
+
+        </div>
+
+        <div class="dismiss" id="Next_of_kin">
+          <div class="client_inputs_text_input">
+            <span class="material-symbols-outlined">
+              language
+            </span>
+            <select name="language" class="genre_" id="country_Next_of_kin">
+              <option value="select country" selected>Select country</option>
+              <option value="Angola">Angola</option>
+              <option value="Botswana">Botswana</option>
+              <option value="Congo">Congo</option>
+              <option value="Malawi">Malawi</option>
+              <option value="Kenya">Kenya</option>
+              <option value="Namibia">Namibia</option>
+              <option value="South Africa">South Africa</option>
+              <option value="Tanzania">Tanzania</option>
+              <option value="Zimbabwe">Zimbabwe</option>
+              <option value="Zambia">Zambia</option>
+            </select>
+          </div>
+          <input class="client_inputs_text_input" type="text" placeholder="First Name (Next of kin)"
+            id="add_loan_First_Name_Next_of_kin">
+          <input class="client_inputs_text_input" type="text" placeholder="Last Name (Next of kin)"
+            id="add_loan_Last_Name_Next_of_kin">
+          <input class="client_inputs_text_input" type="text" placeholder="NRC # (Next of kin)"
+            id="add_loan_NRC_number_Next_of_kin">
+          <input class="client_inputs_text_input" type="text" placeholder="phone # (Next of kin)"
+            id="add_loan_phone_number_Next_of_kin">
+          <input class="client_inputs_text_input" type="text" placeholder="Town (Next of kin)"
+            id="add_loan_town_Next_of_kin">
+          <input class="client_inputs_text_input" type="text" placeholder="Address (Next of kin)"
+            id="add_loan_address_Next_of_kin">
+        </div>
+        <div class="dismiss" id="complete_add_loan">
+
+          <input class="client_inputs_text_input" type="text" placeholder="interest charge (1-100)"
+            id="add_loan_interest_charge_Next_of_kin">
+          <input class="client_inputs_text_input" type="text" placeholder="Amount" id="add_loan_amount_Next_of_kin">
+          <input class="client_inputs_text_input" type="text" placeholder="Secuirty pledged" id="add_loan_secuirty_pledged">
+        </div>
+        <div class="button_container_">
+
+
+          <div class="previous_button_loan_add" id="previous_button_loan_add">
+            <span>Previous</span>
+          </div>
+          <div class="next_button_loan_add" id="next_button_loan_add">
+
+            <span class="dismiss" id="loading_adding_loan">
+              donut_large
+            </span><span id="next_button_loan_add_title">Next</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--DOWNLOAD DIALOG-->
+    <div class="dismiss" id="divices_dialog">
+      <div class="divices_dialog_content_holder">
+
+
+        <div class="downloadable_window" id="Download_Android">
+          <span class="material-symbols-outlined">
+            apk_document
+          </span>
+          <span>
+            Download Android
+          </span>
+        </div>
+        <div class="downloadable_window" id="Download_Windows">
+          <span class="material-symbols-outlined">
+            desktop_windows
+          </span>
+          <span>
+            Download Windows
+          </span>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!------------------------------------------------------------------------------------------------>
+
+    <!--USER INPUT DETAILS CONTAINER----SIGN IN and SIGN UP    content_holder_sign_in-->
+    <div class="landing_container" id="landing_container">
+      <!--SIGN IN CONTAINER-->
+      <div class="content_holder_sign_in" id="sign_in_content_holder">
+        <div class="user_input_tile_holder">
+          <span id="user_register_title"></span>
+        </div>
+
+        <input type="text" id="phone_number_input" placeholder="Phone # ( 096xxxxxxxx)" />
+        <input type="password" id="password_sign_in" placeholder="Password" />
+
+        <div class="register_user_button" id="sign_in_user_button">
+          <img class="dismiss" id="loading_icon_sign_in" src="./images/icons8-loading-100.png" alt="" width="20"
+            height="20" />
+          <span id="sign_In_title">Sign In</span>
+        </div>
+        <div class="button_container_sign_in">
+          <span id="sign_up_link">Sign Up</span>
+          <span id="forgot_password_link">Forgot Password</span>
+        </div>
+      </div>
+
+      <!--SIGN UP CONTAINER-->
+      <div class="dismiss" id="sign_up_content_holder">
+        <div class="sign_up_names_container">
+          <input class="sign_up_names_inputs" type="text" id="first_name_sign_up_input" placeholder="First Name" />
+          <input class="sign_up_names_inputs" type="text" id="last_name_sign_up_input" placeholder="Last Name" />
+        </div>
+
+        <input class="sign_up_details_input" type="email" id="email_sign_up_input" placeholder="Email (Optional)" />
+        <div class="signup_input_country" id="signup_input_country">
+          <span class="material-symbols-outlined">
+            language
+          </span>
+          <select name="language" class="genre_" id="country">
+            <option value="select country" selected>Select country</option>
+            <option value="Angola">Angola</option>
+            <option value="Botswana">Botswana</option>
+            <option value="Congo">Congo</option>
+            <option value="Malawi">Malawi</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Namibia">Namibia</option>
+            <option value="South Africa">South Africa</option>
+            <option value="Tanzania">Tanzania</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+            <option value="Zambia">Zambia</option>
+          </select>
+        </div>
+        <input class="sign_up_details_input" type="tel" id="phone_number_sign_up" placeholder="Phone Number" />
+        <input class="sign_up_details_input" type="password" id="password_sign_up" placeholder="Password" />
+        <input class="sign_up_details_input" type="password" id="confirm_password_sign_up"
+          placeholder="Confirm Password" />
+
+        <div class="register_user_button" id="sign_up_user_button">
+          <img class="dismiss" id="loading_icon_sign_up" src="./images/icons8-loading-100.png" alt="" width="20"
+            height="20" />
+          <span id="sign_up_title">Sign Up</span>
+        </div>
+        <div class="button_container_sign_up">
+          <span>have an account? </span>
+          <span id="sign_in_link">Sign In</span>
+        </div>
+      </div>
+
+      <!--FORGOT PASSWORD   content_holder_forgot_password-->
+      <div class="dismiss" id="forgot_password_content_holder">
+        <div class="reset_password_back_container" id="reset_password_back_container">
+
+          <span class="material-symbols-outlined">
+            arrow_back
+          </span>
+        </div>
+        <span id="password_reset_title">PASSWORD RESET</span>
+
+        <!--send reset code to phone number-->
+        <div class="forgot_password_phone_number_reset" id="reset_code_section">
+          <input class="sign_up_details_input" type="tel" id="phone_number_reset_code" placeholder="Phone Number" />
+          <div class="submit_button_container" id="send_reset_code_button">
+            <img class="dismiss" id="checkmark_reset_code" src="./images/check.png" alt="" width="27" height="27" />
+            <img class="dismiss" id="loading_icon_reset_code" src="./images/icons8-loading-100.png" alt="" width="27"
+              height="27" />
+            <span id="reset_code_button_title">SEND RESET CODE</span>
+          </div>
+        </div>
+        <!--reset code final-->
+        <div class="dismiss" id="reset_code_section_final">
+          <input class="sign_up_details_input" type="tel" id="reset_code_input" placeholder="Reset Code" />
+          <input class="sign_up_details_input" type="password" id="new_password_input" placeholder="New Password" />
+          <input class="sign_up_details_input" type="password" id="confirm_password_input_reset_code"
+            placeholder="Confirm Password" />
+          <div class="submit_button_container" id="reset_password_button_final">
+            <img class="dismiss" id="checkmark_reset_code_final" src="./images/check.png" alt="" width="27"
+              height="27" />
+            <img class="dismiss" id="loading_icon_reset_code_final" src="./images/icons8-loading-100.png" alt=""
+              width="27" height="27" />
+            <span id="reset_password_final_title">RESET PASSWORD</span>
+          </div>
+          <button class="cancel_button" id="cancel_button_reset_code">
+            CANCEL
+          </button>
+        </div>
+      </div>
+    </div>
+</body>
