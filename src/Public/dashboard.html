@@ -467,7 +467,99 @@
             Your listing has been posted successfully!
         </div>
 
+  <!--USER INPUT DETAILS CONTAINER----SIGN IN and SIGN UP    content_holder_sign_in-->
+  <div class="landing_container" id="landing_container">
+    <!--SIGN IN CONTAINER-->
+    <div class="content_holder_sign_in" id="sign_in_content_holder">
+      <div class="user_input_tile_holder">
+        <span id="user_register_title"></span>
+      </div>
 
+      <input type="text" id="phone_number_input" placeholder="Phone # ( 096xxxxxxxx)" />
+      <input type="password" id="password_sign_in" placeholder="Password" />
+
+      <div class="register_user_button" id="sign_in_user_button">
+        <img class="dismiss" id="loading_icon_sign_in" src="./images/icons8-loading-100.png" alt="" width="20"
+          height="20" />
+        <span id="sign_In_title">Sign In</span>
+      </div>
+      <div class="button_container_sign_in">
+        <span id="sign_up_link">Sign Up</span>
+        <span id="forgot_password_link">Forgot Password</span>
+      </div>
+    </div>
+
+    <!--SIGN UP CONTAINER-->
+    <div class="dismiss" id="sign_up_content_holder">
+      <div class="sign_up_names_container">
+        <input class="sign_up_names_inputs" type="text" id="first_name_sign_up_input" placeholder="First Name" />
+        <input class="sign_up_names_inputs" type="text" id="last_name_sign_up_input" placeholder="Last Name" />
+      </div>
+
+      <input class="sign_up_details_input" type="email" id="email_sign_up_input" placeholder="Email (Optional)" />
+
+      <input class="sign_up_details_input" type="tel" id="phone_number_sign_up" placeholder="Phone Number" />
+
+      <div class="sign_up_details_input">
+        <select name="language" class="employee_filter" id="sign_up_country_filter">
+          <option value="country" selected>Country</option>
+          <option value="Botwana">Botwana</option>
+          <option value="Malawi">Malawi</option>
+
+          <option value="Zimbabwe">Zimbabwe</option>
+          <option value="Zambia">Zambia</option>
+        </select>
+      </div>
+      <input class="sign_up_details_input" type="password" id="password_sign_up" placeholder="Password" />
+      <input class="sign_up_details_input" type="password" id="confirm_password_sign_up"
+        placeholder="Confirm Password" />
+
+      <div class="register_user_button" id="sign_up_user_button">
+        <img class="dismiss" id="loading_icon_sign_up" src="./images/icons8-loading-100.png" alt="" width="20"
+          height="20" />
+        <span id="sign_up_title">Sign Up</span>
+      </div>
+      <div class="button_container_sign_up">
+        <span>have an account? </span>
+        <span id="sign_in_link">Sign In</span>
+      </div>
+    </div>
+
+    <!--FORGOT PASSWORD   content_holder_forgot_password-->
+    <div class="dismiss" id="forgot_password_content_holder">
+      <div class="reset_password_back_container" id="reset_password_back_container">
+        <span class="material-symbols-outlined"> arrow_back </span>
+      </div>
+      <span id="password_reset_title">PASSWORD RESET</span>
+
+      <!--send reset code to phone number-->
+      <div class="forgot_password_phone_number_reset" id="reset_code_section">
+        <input class="sign_up_details_input" type="tel" id="phone_number_reset_code" placeholder="Phone Number" />
+        <div class="submit_button_container" id="send_reset_code_button">
+          <img class="dismiss" id="checkmark_reset_code" src="./images/check.png" alt="" width="27" height="27" />
+          <img class="dismiss" id="loading_icon_reset_code" src="./images/icons8-loading-100.png" alt="" width="27"
+            height="27" />
+          <span id="reset_code_button_title">SEND RESET CODE</span>
+        </div>
+      </div>
+      <!--reset code final-->
+      <div class="dismiss" id="reset_code_section_final">
+        <input class="sign_up_details_input" type="tel" id="reset_code_input" placeholder="Reset Code" />
+        <input class="sign_up_details_input" type="password" id="new_password_input" placeholder="New Password" />
+        <input class="sign_up_details_input" type="password" id="confirm_password_input_reset_code"
+          placeholder="Confirm Password" />
+        <div class="submit_button_container" id="reset_password_button_final">
+          <img class="dismiss" id="checkmark_reset_code_final" src="./images/check.png" alt="" width="27" height="27" />
+          <img class="dismiss" id="loading_icon_reset_code_final" src="./images/icons8-loading-100.png" alt=""
+            width="27" height="27" />
+          <span id="reset_password_final_title">RESET PASSWORD</span>
+        </div>
+        <button class="cancel_button" id="cancel_button_reset_code">
+          CANCEL
+        </button>
+      </div>
+    </div>
+  </div>
  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="./assets/dashboard.js"></script>
 </body>
